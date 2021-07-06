@@ -1,0 +1,14 @@
+fullname: "pghero"
+selector:
+  matchLabels:  
+    app: pghero
+replicas: 1  
+imagePullPolicy: Always
+databases:
+# enter the url in format postgres://user:password@hostname:5432/dbname
+# password should be UTF-8 encoded
+  url: "postgres://postgres:cHYtc2VydmljZQ%3D%3D@test-pv-psql-pgpool.test.svc.cluster.local:5432/postgresdb"    
+service:
+  type: ClusterIP
+  port: 80
+

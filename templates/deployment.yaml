@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.fullname }}
+  labels:
+    app: {{ .Values.fullname }}
+spec:
+  selector:
+    {{- toYaml .Values.selector | nindent 4 }}
+  replicas: {{ .Values.replicas }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.fullname }}
+    spec:
+      containers:
+      - name: {{ .Values.fullname }}
+        image: ankane/pghero
+        imagePullPolicy: {{ .Values.imagePullPolicy }}
+        volumeMounts:
+        - name: pghero-configmap
+          mountPath: /app/config/pghero.yml
+          readOnly: true
+          subPath: pghero.yml
+      volumes:
+      - name: pghero-configmap
+        configMap:
+          defaultMode: 0644
+          name: {{ .Values.fullname }}
