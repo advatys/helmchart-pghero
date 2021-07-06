@@ -1,4 +1,5 @@
 fullname: "pghero"
+namespace: pghero
 selector:
   matchLabels:  
     app: pghero
@@ -11,4 +12,17 @@ databases:
 service:
   type: ClusterIP
   port: 80
+ingress:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    # ingress.kubernetes.io/ssl-redirect: "true"
+    # cert-manager.io/cluster-issuer: letsencrypt-prod 
+  enabled: true
+  class: nginx
+  host: example.com
+  tls:
+    enabled: false
+    tlsSecret: pghero
+    
+
 
