@@ -6,7 +6,8 @@ metadata:
     app: pghero
 spec:
   selector:
-    app: pghero
+    matchLabels: 
+      app: pghero
   replicas: {{ .Values.replicas }}
   template:
     metadata:
