@@ -5,6 +5,8 @@ metadata:
   annotations:
     {{- toYaml .Values.ingress.annotations | nindent 4 }}  
   name: {{ include "helmchart-pghero.fullname" . }}
+  labels:
+    ingressClassName: noname
 spec:
   {{- if .Values.ingress.tls.enabled }}
   tls:
