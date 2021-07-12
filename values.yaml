@@ -41,7 +41,7 @@ ingress:
 
   host: example.com
   tls:
-    enabled: false
+    enabled: true
     
 
 
