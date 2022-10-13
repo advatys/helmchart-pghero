@@ -6,9 +6,9 @@ metadata:
     {{- toYaml .Values.ingress.annotations | nindent 4 }}  
   name: {{ include "helmchart-pghero.fullname" . }}
   labels:
-    ingressClassName: noname
+    ingressClassName: openshift-default
 spec:
-  ingressClassName: private-nginx-stable
+  ingressClassName: openshift-default
   {{- if .Values.ingress.tls.enabled }}
   tls:
   - hosts: 
